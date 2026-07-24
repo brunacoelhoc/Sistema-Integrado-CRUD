@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Estoque</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/crud.css">
+</head>
+
+<body>
+    <div id="vanta-bg"></div>
+
+    <div class="app-container">
+        <header>
+            <nav>
+                <a href="../index.html">📊 Dashboard</a>
+                <a href="produtos.html">📦 Produtos</a>
+                <a href="estoque.html" class="active">🏭 Estoque</a>
+                <a href="pedidos.html">🛒 Pedidos</a>
+            </nav>
+        </header>
+
+        <main class="glass-card">
+            <div class="controls-bar">
+                <h2>Controle de Estoque</h2>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produto ID</th>
+                            <th>Nome do Produto</th>
+                            <th>Quantidade</th>
+                            <th>Status Resultante</th>
+                            <th>Última Atualização</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb-estoque">
+                        <!-- Renderizado via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Editar Quantidade -->
+    <div class="modal-overlay" id="modal-estoque">
+        <div class="glass-card modal-body">
+            <h3>Atualizar Quantidade em Estoque</h3>
+            <form id="form-estoque" style="margin-top: 1rem;">
+                <input type="hidden" id="estoque-produto-id">
+                <div class="form-group">
+                    <label>Produto</label>
+                    <input type="text" id="estoque-produto-nome" disabled style="opacity: 0.7;">
+                </div>
+                <div class="form-group">
+                    <label for="quantidade">Nova Quantidade *</label>
+                    <input type="number" id="quantidade" min="0" required>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    ⚡ Alterar este valor atualizará automaticamente o status do produto.
+                </p>
+                <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                    <button type="button" class="btn btn-secondary" id="btn-cancelar-est">Cancelar</button>
+                    <button type="submit" class="btn">Atualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="../js/estoque.js"></script>
+</body>
+
+</html>
