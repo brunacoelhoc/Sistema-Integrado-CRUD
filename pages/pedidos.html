@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Pedidos</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/crud.css">
+</head>
+
+<body>
+    <div id="vanta-bg"></div>
+
+    <div class="app-container">
+        <header>
+            <nav>
+                <a href="../index.html">📊 Dashboard</a>
+                <a href="produtos.html">📦 Produtos</a>
+                <a href="estoque.html">🏭 Estoque</a>
+                <a href="pedidos.html" class="active">🛒 Pedidos</a>
+            </nav>
+        </header>
+
+        <main class="glass-card">
+            <div class="controls-bar">
+                <h2>Histórico de Pedidos</h2>
+                <button class="btn" id="btn-novo-pedido">+ Novo Pedido</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Data</th>
+                            <th>Itens</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb-pedidos">
+                        <!-- Renderizado via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Criar Pedido -->
+    <div class="modal-overlay" id="modal-pedido">
+        <div class="glass-card modal-body">
+            <h3>Registrar Novo Pedido</h3>
+            <form id="form-pedido" style="margin-top: 1rem;">
+                <div class="form-group">
+                    <label for="cliente">Nome do Cliente *</label>
+                    <input type="text" id="cliente" required placeholder="Ex: João Silva">
+                </div>
+
+                <div class="form-group">
+                    <label for="select-produto">Produto *</label>
+                    <select id="select-produto" required>
+                        <option value="">Selecione um produto...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade-pedido">Quantidade *</label>
+                    <input type="number" id="quantidade-pedido" min="1" value="1" required>
+                </div>
+
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                    ⚡ Criar o pedido abaterá do estoque e recalculará o status do produto.
+                </p>
+
+                <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                    <button type="button" class="btn btn-secondary" id="btn-cancelar-ped">Cancelar</button>
+                    <button type="submit" class="btn">Finalizar Pedido</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="../js/pedidos.js"></script>
+</body>
+
+</html>

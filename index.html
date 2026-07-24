@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema Integrado</title>
+
+    <!-- Favicon Local da pasta assets/ -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.svg">
+
+    <!-- CSS da Aplicação -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Vanta.js + Three.js (Efeito de Fundo 3D) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
+
+    <!-- Chart.js (Gráficos) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Container do Efeito Vanta 3D -->
+    <div id="vanta-bg"></div>
+
+    <div class="app-container">
+        <!-- Cabeçalho / Navegação Principal -->
+        <header>
+            <nav>
+                <a href="index.html" class="active">📊 Dashboard</a>
+                <a href="pages/produtos.html">📦 Produtos</a>
+                <a href="pages/estoque.html">🏭 Estoque</a>
+                <a href="pages/pedidos.html">🛒 Pedidos</a>
+            </nav>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <main style="display: flex; flex-direction: column; gap: 2rem;">
+
+            <!-- Cards Indicadores (KPIs) -->
+            <section class="kpi-grid">
+                <div class="glass-card kpi-card">
+                    <h3>Total de Produtos</h3>
+                    <div class="value" id="kpi-total-produtos">-</div>
+                </div>
+
+                <div class="glass-card kpi-card">
+                    <h3>Estoque Baixo / Indisponível</h3>
+                    <div class="value" id="kpi-alerta-estoque" style="color: #fbbf24;">-</div>
+                </div>
+
+                <div class="glass-card kpi-card">
+                    <h3>Pedidos Efetuados</h3>
+                    <div class="value" id="kpi-total-pedidos">-</div>
+                </div>
+
+                <div class="glass-card kpi-card">
+                    <h3>Faturamento Acumulado</h3>
+                    <div class="value" id="kpi-faturamento" style="color: #34d399;">-</div>
+                </div>
+            </section>
+
+            <!-- Seção do Gráfico de Categoria -->
+            <section class="glass-card">
+                <h2 style="margin-bottom: 1.5rem;">Visão Geral do Estoque por Categoria</h2>
+                <div class="chart-container" style="position: relative; height: 350px; width: 100%;">
+                    <canvas id="chart-estoque-categoria"></canvas>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script de Regras e Carregamento do Dashboard -->
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+
+</html>
